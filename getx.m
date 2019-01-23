@@ -1,7 +1,7 @@
 function datax=getx(data)
-datax=zeros(2000,12);
+datax=zeros(size(data,1),size(data,2)/3);
 y=1;
-for i = 1:12
+for i = 1:size(data,2)/3
     datax(:,i)=data(:,y);
     y=y+3;
 end

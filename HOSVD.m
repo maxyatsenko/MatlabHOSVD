@@ -26,7 +26,7 @@ plotn(datax);
 % visualize the whole tensor of data (experimental)
 figure();
 slice3(eventtensor);
-caxis([-10 10])
+caxis([-1 1])
 %% Tensorization
 % combine separated matrices of x, y, z into one 3D tensor here
 datatensor=zeros(size(datax,1),size(datax,2),3);
@@ -40,7 +40,7 @@ datatensor(:,:,3)=dataz;
 %% HOSVD
 %dataMLSVD=reshape(datapy,[],96);
 %[Ue,Se,sve]=mlsvd(dataMLSVD,[n,n]);
-[Ue,Se,sve]=mlsvd(datatensor);
+[Ue,Se,sve]=mlsvd(datatensor,[1000,10,3]);
 plotsve(sve);
 % [Uetrunc, Setrunc,ntensor]=truncate(Ue,Se,sve,0.005);
 % [Uexyz,Sexyz,svexyz]=mlsvd(xyztensor);
