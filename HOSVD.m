@@ -67,7 +67,7 @@ plotsve(sve);
 % reduction2=1-(var2/(size(xyztensor,1)*size(xyztensor,2)*...
 % size(xyztensor,3)));
 %% Exporting
-save('HOSVDresults.mat','Ue','Se','sve');
+% save('HOSVDresults.mat','Ue','Se','sve');
 % save('dataSVD.mat','Uc','Sc','Vc');
 % fileID = fopen('data.txt','w');
 % formatSpec = '%.15f\n';

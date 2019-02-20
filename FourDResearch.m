@@ -4,13 +4,22 @@ clear all;
 clc;
 %% Load Data
 % load synthetic data tensor
-load('SynthOneSource.mat');
-load('synthTensor');
-twoeventtens=zeros(1000,10,3);
-twoeventtens(:,:,1)=eventtensor(:,1:3:30,2);
-twoeventtens(:,:,2)=eventtensor(:,2:3:30,2);
-twoeventtens(:,:,3)=eventtensor(:,3:3:30,2);
-%distrcheck(data, 0);
+load('SynthGoUp.mat');
+% get 5 different sources (go up 1 meter every time)
+source1=zeros(1000,10,3);
+source2=zeros(1000,10,3);
+source3=zeros(1000,10,3);
+source4=zeros(1000,10,3);
+source5=zeros(1000,10,3);
+source1(:,:,:)=trc(1,:,:,:);
+source2(:,:,:)=trc(2,:,:,:);
+source3(:,:,:)=trc(3,:,:,:);
+source4(:,:,:)=trc(4,:,:,:);
+source5(:,:,:)=trc(5,:,:,:);
+% visualize 3D
+figure();
+slice3(source1);
+caxis([-0.001 0.001])
 % create 4D tensor out of the data (no changes)
 k=3;
 n=12;
