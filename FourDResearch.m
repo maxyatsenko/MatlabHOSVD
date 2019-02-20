@@ -23,14 +23,14 @@ caxis([-0.001 0.001])
 % create 4D tensor out of the data
 % ni - i-th source is at position ni of the 4Dtensor
 n2=2;
-n3=3;
+n3=4;
 n4=4;
 n5=5;
 nend=n5;
 nochange=false;
 nothird=false;
-nofourth=false;
-nofifth=false;
+nofourth=true;
+nofifth=true;
 % which one to pick if no change in time?
 source=source2;
 tensor4D=zeros(1000,10,3,nend);
@@ -41,14 +41,32 @@ if nochange==false
     for i=n2:n3-1
         tensor4D(:,:,:,i)=source2;
     end
-    for i=n3:n4-1
-        tensor4D(:,:,:,i)=source3;
-    end
-    for i=n4:n5-1
-        tensor4D(:,:,:,i)=source4;
-    end
-    for i=n5:nend
-        tensor4D(:,:,:,i)=source5;
+    if nothird==false
+        for i=n3:n4-1
+            tensor4D(:,:,:,i)=source3;
+        end
+        if nofourth==false
+            for i=n4:n5-1
+                tensor4D(:,:,:,i)=source4;
+            end
+            if nofifth==false
+                for i=n5:nend
+                    tensor4D(:,:,:,i)=source5;
+                end
+            else
+                for i=n5:nend
+                    tensor4D(:,:,:,i)=source4;
+                end
+            end
+        else
+            for i=n4:nend
+                tensor4D(:,:,:,i)=source3;
+            end
+        end 
+    else
+        for i=n3:nend
+            tensor4D(:,:,:,i)=source2;
+        end
     end
 else
     for i=1:nend
